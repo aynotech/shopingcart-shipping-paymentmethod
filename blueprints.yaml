@@ -1,0 +1,48 @@
+name: Shopping Cart Shipping Payment Method
+version: 1.0.0
+description: Associate shipping methods to payment methods
+icon: code
+author:
+  name: Reza Fathi
+  email: reza@aynotech.com
+  url: http://github.com/aynotech
+homepage: https://github.com/aynotech/shoppingcart-shipping-payment-method
+keywords: Shoppingcart, shipping, payment, grav
+bugs: https://github.com/aynotech/shoppingcart-shipping-payment-method/issues
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+    mapping:
+      name: mapping
+      type: list
+      style: Horizontal
+      label: Mapping
+      fields:
+        .shipping:
+          type: select
+          label: Shipping method
+          classes: fancy
+          data-options@: 'Grav\ShoppingcartShippingPaymentMethod\Service\ConfigService::getOptions'
+        .payment:
+          type: select
+          label: Payment method
+          classes: fancy
+          options:
+            manual_checkout: Manual Checkout
+            stripe: Stripe
+            twocheckout: Twocheckout
+            pin: Pin Payments
+            paypal_express: PayPal Express
+
